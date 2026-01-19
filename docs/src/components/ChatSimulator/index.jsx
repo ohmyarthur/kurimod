@@ -1,5 +1,4 @@
-import styles from './styles.module.css';
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 
 const controller = {
     setMessages: () => {
@@ -31,7 +30,7 @@ const sendMessage = (message) => {
     }
 }
 
-const Command = ({command}) => {
+const Command = ({ command }) => {
     return (
         <div className={"text-blue-500 inline cursor-pointer"} onClick={() => sendMessage(command)}>
             {command}
@@ -40,7 +39,7 @@ const Command = ({command}) => {
 }
 
 
-const ChatMessage = ({message, outgoing}) => {
+const ChatMessage = ({ message, outgoing }) => {
     let innerBubble = [message];
 
     // replace all texts that start with slash for Command instance instead
@@ -53,7 +52,7 @@ const ChatMessage = ({message, outgoing}) => {
         for (let i = 0; i < split.length; i++) {
             innerBubble.push(split[i]);
             if (i < commands.length) {
-                innerBubble.push(<Command key={i} command={commands[i]}/>);
+                innerBubble.push(<Command key={i} command={commands[i]} />);
             }
         }
 
@@ -80,7 +79,7 @@ const ChatMessage = ({message, outgoing}) => {
 }
 
 
-export const ChatSimulator = ({updateCallback}) => {
+export const ChatSimulator = ({ updateCallback }) => {
     const inputRef = useRef(null);
     const [messages, setMessages] = useState([]);
     controller.setMessages = setMessages;
@@ -99,23 +98,23 @@ export const ChatSimulator = ({updateCallback}) => {
     }, []);
 
     return (
-        <div className={styles.chatContainer}>
-            <div className={styles.chatHeader}>
-                <div className={styles.chatHeaderTitle}>Chat Simulator</div>
+        <div className="flex flex-col h-96 w-[80vw] md:w-96 bg-base-100 border-2 dark:border-base-300 rounded-box shadow-xl overflow-hidden m-2 text-base">
+            <div className="flex flex-row justify-center items-center h-12 w-full bg-base-200 select-none">
+                <div className="text-lg font-medium text-base-content">Chat Simulator</div>
             </div>
-            <div className={styles.chatBody}>
-                <div className={styles.chatMessagesContainer}>
+            <div className="flex flex-grow h-full max-h-full w-full bg-base-100 overflow-auto scrollbar-thin scrollbar-thumb-neutral">
+                <div className="flex flex-col-reverse flex-grow h-full max-h-full w-full bg-base-100 px-2 overflow-auto scrollbar-thin">
                     {messages.map((message, index) => {
                         console.log(message)
                         return (
-                            <ChatMessage key={index} message={message.value} outgoing={message.outgoing}/>
+                            <ChatMessage key={index} message={message.value} outgoing={message.outgoing} />
                         )
                     })}
                 </div>
             </div>
-            <form onSubmit={onSubmit} className={styles.chatFooter}>
-                <input className={styles.chatInput} ref={inputRef} type="text" placeholder="Type a message"/>
-                <button type="submit" className={styles.chatButton}>Send</button>
+            <form onSubmit={onSubmit} className="flex flex-row justify-center items-center h-12 w-full bg-base-200 gap-2 p-2">
+                <input className="input input-sm input-bordered w-full max-w-xs flex-grow" ref={inputRef} type="text" placeholder="Type a message" />
+                <button type="submit" className="btn btn-sm glass">Send</button>
             </form>
         </div>
 
