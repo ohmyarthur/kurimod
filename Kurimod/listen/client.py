@@ -12,7 +12,7 @@ from ..utils import should_patch, patch_into
 
 if not config.disable_startup_logs:
     print(
-        "Kurimod is working! If you like Kurimod, please star it at https://github.com/ohmyarthur/Kurimod"
+        "kurimod is working! If you like kurimod, please star it at https://github.com/ohmyarthur/kurimod"
     )
 
 

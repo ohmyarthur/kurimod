@@ -1,9 +1,9 @@
 """
-Test script to verify async/non-blocking behavior in Kurimod
+Test script to verify async/non-blocking behavior in kurimod
 """
 import asyncio
 import time
-from Kurimod import Client
+from kurimod import Client
 
 # Test 1: Verify async callback works correctly
 async def test_async_callback():
@@ -37,7 +37,7 @@ async def test_async_methods():
     print("Test 3: Async methods in Chat and User...")
     
     # Check that the methods are defined as async
-    from Kurimod.listen import Chat, User
+    from kurimod.listen import Chat, User
     
     # Verify methods are async
     assert asyncio.iscoroutinefunction(Chat.listen), "Chat.listen should be async"
@@ -56,7 +56,7 @@ async def test_event_loop():
     print("Test 4: Event loop handling...")
     
     # Read the client.py file to verify
-    with open("/home/aes/Workspace/pyromod/Kurimod/listen/client.py", "r") as f:
+    with open("/home/aes/Workspace/pyromod/kurimod/listen/client.py", "r") as f:
         content = f.read()
         assert "asyncio.get_running_loop()" in content, "Should use get_running_loop()"
         assert "asyncio.get_event_loop()" not in content, "Should not use deprecated get_event_loop()"
@@ -70,12 +70,12 @@ async def test_filter_handling():
     print("Test 5: Filter handling...")
     
     # Check message_handler.py
-    with open("/home/aes/Workspace/pyromod/Kurimod/listen/message_handler.py", "r") as f:
+    with open("/home/aes/Workspace/pyromod/kurimod/listen/message_handler.py", "r") as f:
         content = f.read()
         assert "run_in_executor" in content, "Should use run_in_executor for sync filters"
     
     # Check callback_query_handler.py
-    with open("/home/aes/Workspace/pyromod/Kurimod/listen/callback_query_handler.py", "r") as f:
+    with open("/home/aes/Workspace/pyromod/kurimod/listen/callback_query_handler.py", "r") as f:
         content = f.read()
         assert "run_in_executor" in content, "Should use run_in_executor for sync filters"
     
@@ -85,7 +85,7 @@ async def test_filter_handling():
 # Run all tests
 async def main():
     print("=" * 60)
-    print("Kurimod Async/Non-Blocking Tests")
+    print("kurimod Async/Non-Blocking Tests")
     print("=" * 60)
     print()
     

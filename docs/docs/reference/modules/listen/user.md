@@ -2,12 +2,12 @@
 title: User
 ---
 
-## *class* `Kurimod.listen.User`
+## *class* `kurimod.listen.User`
 
 Bases: `pyrogram.types.user_and_chats.user.User`
 
-The `Kurimod.listen.User` class is an extension of the `pyrogram.types.user_and_chats.user.User` class. It provides additional
-methods for working with User objects with Kurimod.
+The `kurimod.listen.User` class is an extension of the `pyrogram.types.user_and_chats.user.User` class. It provides additional
+methods for working with User objects with kurimod.
 
 ### *bound method* `listen`
 

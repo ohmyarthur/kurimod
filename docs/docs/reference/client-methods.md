@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Client Methods
 
-Kurimod extends the Kurigram Client class with several powerful methods for conversation management and user interaction.
+kurimod extends the Kurigram Client class with several powerful methods for conversation management and user interaction.
 
 ### listen()
 
@@ -46,7 +46,7 @@ async def listen(
 #### Example
 
 ```python
-from Kurimod import Client
+from kurimod import Client
 
 client = Client("my_bot")
 
@@ -107,7 +107,7 @@ All parameters from `listen()` plus:
 #### Example
 
 ```python
-from Kurimod import Client
+from kurimod import Client
 
 client = Client("my_bot")
 
@@ -157,7 +157,7 @@ async def stop_listening(
 #### Example
 
 ```python
-from Kurimod import Client
+from kurimod import Client
 
 client = Client("my_bot")
 
@@ -190,7 +190,7 @@ async def stop_listener(listener: Listener) -> None
 #### Example
 
 ```python
-from Kurimod import Client
+from kurimod import Client
 
 client = Client("my_bot")
 
@@ -237,7 +237,7 @@ def register_next_step_handler(
 #### Example
 
 ```python
-from Kurimod import Client
+from kurimod import Client
 
 client = Client("my_bot")
 
@@ -256,7 +256,7 @@ client.register_next_step_handler(
 
 ## Bound Methods
 
-Kurimod also adds convenience methods to `Chat` and `User` objects.
+kurimod also adds convenience methods to `Chat` and `User` objects.
 
 ### Chat.listen()
 
@@ -309,7 +309,7 @@ async def stop_listening(*args, **kwargs) -> None
 #### Example
 
 ```python
-from Kurimod import Client
+from kurimod import Client
 
 client = Client("my_bot")
 

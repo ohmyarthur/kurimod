@@ -8,7 +8,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Kurimod',
+  title: 'kurimod',
   tagline: 'A monkeypatcher add-on for Kurigram',
   favicon: 'img/favicon.ico',
 
@@ -47,7 +47,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/ohmyarthur/Kurimod/tree/master/docs/',
+            'https://github.com/ohmyarthur/kurimod/tree/master/docs/',
         },
         blog: false,
         theme: {
@@ -66,7 +66,7 @@ const config = {
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Kurimod',
+        title: 'kurimod',
         items: [
           {
             type: 'docSidebar',
@@ -87,7 +87,7 @@ const config = {
             label: 'Release Notes',
           },
           {
-            href: 'https://github.com/ohmyarthur/Kurimod',
+            href: 'https://github.com/ohmyarthur/kurimod',
             label: 'GitHub',
             position: 'right',
           },
@@ -110,12 +110,12 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/ohmyarthur/Kurimod',
+                href: 'https://github.com/ohmyarthur/kurimod',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Kurimod. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} kurimod. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

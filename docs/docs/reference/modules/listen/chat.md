@@ -2,12 +2,12 @@
 title: Chat
 ---
 
-## *class* `Kurimod.listen.Chat`
+## *class* `kurimod.listen.Chat`
 
 Bases: `pyrogram.types.user_and_chats.chat.Chat`
 
-The `Kurimod.listen.Chat` class is an extension of the `pyrogram.types.user_and_chats.chat.Chat` class. It provides additional
-methods for working with chats with Kurimod. It is monkeypatched into the `pyrogram.types.user_and_chats.chat.Chat` class, so you get all the
+The `kurimod.listen.Chat` class is an extension of the `pyrogram.types.user_and_chats.chat.Chat` class. It provides additional
+methods for working with chats with kurimod. It is monkeypatched into the `pyrogram.types.user_and_chats.chat.Chat` class, so you get all the
 methods described here on the original class when you receive the chat object.
 
 ### *bound method* `listen`

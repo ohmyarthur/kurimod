@@ -3,10 +3,10 @@ import {useState} from "react";
 import clsx from "clsx";
 import { CopyBlock, dracula } from 'react-code-blocks';
 
-export const KurimodCodeBox = () => {
+export const kurimodCodeBox = () => {
     const [step, setStep] = useState(0);
 
-    on("KurimodCodeStep", (step) => {
+    on("kurimodCodeStep", (step) => {
         setStep(step);
     });
     

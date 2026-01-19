@@ -2,11 +2,11 @@
 title: Message
 ---
 
-## *class* Kurimod.listen.Message
+## *class* kurimod.listen.Message
 
 Bases: `pyrogram.Message`
 
-The `Kurimod.listen.Message` class is an extension of the `pyrogram.Message` class. It provides additional methods for waiting
+The `kurimod.listen.Message` class is an extension of the `pyrogram.Message` class. It provides additional methods for waiting
 for user clicks on inline buttons within messages.
 
 ### *async* `wait_for_click`

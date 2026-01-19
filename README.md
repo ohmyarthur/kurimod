@@ -1,25 +1,25 @@
-# Kurimod
+# kurimod
 
-<img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" height="30" /> <img src="https://img.shields.io/github/v/release/ohmyarthur/Kurimod" height="30" /> <img src="https://img.shields.io/github/license/ohmyarthur/Kurimod" height="30" />
+<img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" height="30" /> <img src="https://img.shields.io/github/v/release/ohmyarthur/kurimod" height="30" /> <img src="https://img.shields.io/github/license/ohmyarthur/kurimod" height="30" />
 
-Kurimod is a versatile Python add-on for the Kurigram library, designed to make developing Telegram bots faster and more
+kurimod is a versatile Python add-on for the Kurigram library, designed to make developing Telegram bots faster and more
 efficient.
 
 It's based on **monkeypatching**, which means it works together with Kurigram, rather than being a fork or modified
 version. It
 adds features to Kurigram classes on the go, so you don't need to update it every time Kurigram is updated.
 
-Whether you're building a simple chatbot or a complex form to get multiple responses from the user, Kurimod has you
+Whether you're building a simple chatbot or a complex form to get multiple responses from the user, kurimod has you
 covered. It enhances Kurigram with a range
 of advanced features, simplifies conversation handling, and offers a high degree of customizability.
 
 ## Documentation
 
-You can find the full documentation at [ohmyarthur.github.io/Kurimod](https://ohmyarthur.github.io/Kurimod).
+You can find the full documentation at [ohmyarthur.github.io/kurimod](https://ohmyarthur.github.io/kurimod).
 
 ## Key Features
 
-- **Effortless Bot Development:** Kurimod streamlines the process of building conversational Telegram bots, saving you
+- **Effortless Bot Development:** kurimod streamlines the process of building conversational Telegram bots, saving you
   time and effort
   during development.
 
@@ -27,14 +27,14 @@ You can find the full documentation at [ohmyarthur.github.io/Kurimod](https://oh
   and interactive interactions much easier, without having to save states anywhere, by leveraging the power of
   async/await syntax.
 
-- **Effortless Inline Keyboards Creation:** Creating inline keyboards is easier than ever with Kurimod's inline keyboard
+- **Effortless Inline Keyboards Creation:** Creating inline keyboards is easier than ever with kurimod's inline keyboard
   helper functions.
 
-- **User-Friendly Pagination:** Enhance the user experience by providing easy navigation tools with the Kurimod's
+- **User-Friendly Pagination:** Enhance the user experience by providing easy navigation tools with the kurimod's
   pagination
   helpers.
 
-- **Highly Customizable:** Kurimod's configuration options let you customize its behavior to meet your specific project
+- **Highly Customizable:** kurimod's configuration options let you customize its behavior to meet your specific project
   requirements.
 
 ## Examples
@@ -69,7 +69,7 @@ except ListenerTimeout:
 **Full handler example, getting user's name and age with bound method Chat.ask:**
 
 ```python
-from Kurimod import Client, Message
+from kurimod import Client, Message
 from pyrogram import filters
 
 
@@ -86,7 +86,7 @@ async def on_form(client: Client, message: Message):
 **Easier inline keyboard creation:**
 
 ```python
-from Kurimod.helpers import ikb
+from kurimod.helpers import ikb
 
 keyboard = ikb([
     [('Button 1', 'callback_data_1'), ('Button 2', 'callback_data_2')],
@@ -96,41 +96,41 @@ keyboard = ikb([
 
 ## Installation
 
-To get started with Kurimod, you can install it using uv:
+To get started with kurimod, you can install it using uv:
 
 ```bash
-uv add git+https://github.com/ohmyarthur/Kurimod
+uv add git+https://github.com/ohmyarthur/kurimod
 ```
 
 Or with pip:
 
 ```bash
-pip install git+https://github.com/ohmyarthur/Kurimod
+pip install git+https://github.com/ohmyarthur/kurimod
 ```
 
 ## Initialization
 
-To initialize Kurimod, on the file that creates the client instance, simply import the Client class from Kurimod instead
+To initialize kurimod, on the file that creates the client instance, simply import the Client class from kurimod instead
 of kurigram:
 
 ```python
-from Kurimod import Client
+from kurimod import Client
 ```
 
 And that's all! You can still use the `Client` class as you would normally do with Kurigram, but now having all the
 extra features.
 
-You don't need to change the imports on the plugins files. Even by importing `Client` from kurigram, the Kurimod
-features will be available anyway. In order to monkeyatch Kurimod features successfully, it's just required that the
-first `Client` class imported to your project code should be from Kurimod. Then all the other future `Client` instances
+You don't need to change the imports on the plugins files. Even by importing `Client` from kurigram, the kurimod
+features will be available anyway. In order to monkeyatch kurimod features successfully, it's just required that the
+first `Client` class imported to your project code should be from kurimod. Then all the other future `Client` instances
 will be patched automatically.
 
-You just need to import from Kurimod if you want your IDE to recognize and suggest
-the extra features based on `Kurimod.Client` type.
+You just need to import from kurimod if you want your IDE to recognize and suggest
+the extra features based on `kurimod.Client` type.
 
 ## Contributing
 
-We welcome contributions from the community to make Kurimod even better.
+We welcome contributions from the community to make kurimod even better.
 
 Feel free to open issues, submit pull requests,
 or contribute in any way that aligns with our goals.
