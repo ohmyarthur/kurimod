@@ -12,10 +12,10 @@ function HomepageHeader() {
     return (
         <header className={clsx('hero hero--primary', styles.heroBanner)}>
             <div className="container">
-                <Heading as="h1" className="hero__title">
+                <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
                     {siteConfig.title}
                 </Heading>
-                <p className="hero__subtitle">{siteConfig.tagline}</p>
+                <p className={clsx('hero__subtitle', styles.heroSubtitle)}>{siteConfig.tagline}</p>
             </div>
         </header>
     );
@@ -29,7 +29,7 @@ export default function Home() {
             <HomepageHeader/>
             <div className={"flex flex-col items-center justify-center"}>
                 <div className={"flex flex-col gap-5 justify-center items-center w-full"}>
-                    <div className={"flex w-full flex-col md:flex-row justify-evenly items-center p-8 gap-5"}>
+                    <div className={"flex w-full max-w-6xl flex-col md:flex-row justify-evenly items-stretch p-8 gap-5"}>
                         <div className={styles.advantage}>
                             Powerful add-on that monkeypatches extra useful features.
                         </div>
@@ -48,15 +48,7 @@ export default function Home() {
                     <kurimodChatSimulator/>
                     <kurimodCodeBox/>
                 </div>
-                <a
-                    href="/getting-started/intro"
-                    className={"no=underline m-5"}
-                >
-                    <div
-                        className={"no-underline hover:no-underline p-3 font-bold text-[var(--ifm-font-color-base-inverse)] bg-[var(--ifm-color-primary-light)] uppercase rounded-btn md:hover:brightness-90 duration-150 md:active:scale-95 select-none cursor-pointer"}>Get
-                        Started
-                    </div>
-                </a>
+                <a className={"button button--primary button--lg m-5"} href="/getting-started/intro">Get Started</a>
             </div>
         </Layout>
     );

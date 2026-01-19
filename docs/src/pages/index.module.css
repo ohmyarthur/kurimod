@@ -8,6 +8,19 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: radial-gradient(1200px circle at 50% -20%, rgba(76, 201, 240, 0.35), transparent 60%),
+    linear-gradient(180deg, rgba(44, 165, 224, 0.18), rgba(15, 23, 42, 0));
+}
+
+.heroTitle {
+  color: var(--ifm-heading-color);
+}
+
+.heroSubtitle {
+  color: var(--ifm-text-color);
+  opacity: 0.9;
+  max-width: 48rem;
+  margin: 0.75rem auto 0;
 }
 
 @media screen and (max-width: 996px) {
@@ -23,6 +36,8 @@
 }
 
 .advantage {
-  @apply flex flex-col gap-5 justify-center items-center w-[70vw] md:w-64 text-center bg-base-200 rounded-box p-4 font-medium;
+  @apply flex flex-col justify-center items-center w-full md:w-64 text-center rounded-box p-4 font-medium;
   @apply md:hover:shadow-xl md:hover:scale-105 duration-150;
+  background-color: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-border-color);
 }
