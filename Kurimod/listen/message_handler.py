@@ -89,7 +89,9 @@ class MessageHandler(pyrogram.handlers.message_handler.MessageHandler):
                 if iscoroutinefunction(listener.callback):
                     await listener.callback(client, message, *args)
                 else:
-                    listener.callback(client, message, *args)
+                    await client.loop.run_in_executor(
+                        None, listener.callback, client, message, *args
+                    )
 
                 raise pyrogram.StopPropagation
             else:

@@ -1,4 +1,4 @@
-from pyromod import Client
+from Kurimod import Client
 import pyrogram
 
 bot = Client("my_bot")

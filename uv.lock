@@ -1,0 +1,42 @@
+version = 1
+revision = 3
+requires-python = ">=3.8"
+
+[[package]]
+name = "kurigram"
+version = "2.2.17"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pyaes" },
+    { name = "pysocks" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/bd/8a/006d91423d7602a6a28678cac76ec562793a0141f0b21105795e0465393e/kurigram-2.2.17.tar.gz", hash = "sha256:b4aa417d205d9103a0691c7c2ed156c5e7dc5bc9305f13b6234b3f4d37bb8457", size = 547643, upload-time = "2025-12-29T14:58:05.97Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fe/64/7dbf7c005aeb9f694accf821e964576db09c778972932c4909640b7e622b/kurigram-2.2.17-py3-none-any.whl", hash = "sha256:636dc1c34dd2e9b2785528937a6cca3de28f44678f66fc6d8b152ae9879af859", size = 5435593, upload-time = "2025-12-29T14:58:04.317Z" },
+]
+
+[[package]]
+name = "pyaes"
+version = "1.6.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/44/66/2c17bae31c906613795711fc78045c285048168919ace2220daa372c7d72/pyaes-1.6.1.tar.gz", hash = "sha256:02c1b1405c38d3c370b085fb952dd8bea3fadcee6411ad99f312cc129c536d8f", size = 28536, upload-time = "2017-09-20T21:17:54.23Z" }
+
+[[package]]
+name = "Kurimod"
+version = "3.2.0"
+source = { editable = "." }
+dependencies = [
+    { name = "kurigram" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "kurigram" }]
+
+[[package]]
+name = "pysocks"
+version = "1.7.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/bd/11/293dd436aea955d45fc4e8a35b6ae7270f5b8e00b53cf6c024c83b657a11/PySocks-1.7.1.tar.gz", hash = "sha256:3f8804571ebe159c380ac6de37643bb4685970655d3bba243530d6558b799aa0", size = 284429, upload-time = "2019-09-20T02:07:35.714Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8d/59/b4572118e098ac8e46e399a1dd0f2d85403ce8bbaad9ec79373ed6badaf9/PySocks-1.7.1-py3-none-any.whl", hash = "sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5", size = 16725, upload-time = "2019-09-20T02:06:22.938Z" },
+]

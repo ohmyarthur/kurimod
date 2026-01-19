@@ -8,22 +8,22 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'pyromod',
-  tagline: 'A monkeypatcher add-on for Pyrogram',
+  title: 'Kurimod',
+  tagline: 'A monkeypatcher add-on for Kurigram',
   favicon: 'img/favicon.ico',
 
   trailingSlash: false,
 
   // Set the production url of your site here
-  url: 'https://pyromod.pauxis.dev',
+  url: 'https://ohmyarthur.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/Kurimod/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'usernein', // Usually your GitHub org/user name.
-  projectName: 'pyromod', // Usually your repo name.
+  organizationName: 'ohmyarthur', // Usually your GitHub org/user name.
+  projectName: 'Kurimod', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -47,7 +47,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/usernein/pyromod/tree/master/docs/',
+            'https://github.com/ohmyarthur/Kurimod/tree/master/docs/',
         },
         blog: false,
         theme: {
@@ -66,7 +66,7 @@ const config = {
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'pyromod',
+        title: 'Kurimod',
         items: [
           {
             type: 'docSidebar',
@@ -87,7 +87,7 @@ const config = {
             label: 'Release Notes',
           },
           {
-            href: 'https://github.com/usernein/pyromod',
+            href: 'https://github.com/ohmyarthur/Kurimod',
             label: 'GitHub',
             position: 'right',
           },
@@ -101,7 +101,7 @@ const config = {
             items: [
               {
                 label: 'Telegram Chat',
-                href: 'https://t.me/pyromodchat/',
+                href: 'https://t.me/honlyonee/',
               }
             ],
           },
@@ -110,12 +110,12 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/usernein/pyromod',
+                href: 'https://github.com/ohmyarthur/Kurimod',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} pyromod. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Kurimod. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
@@ -127,7 +127,6 @@ const config = {
       return {
         name: "docusaurus-tailwindcss",
         configurePostCss(postcssOptions) {
-          // Appends TailwindCSS and AutoPrefixer.
           postcssOptions.plugins.push(require("tailwindcss"));
           postcssOptions.plugins.push(require("autoprefixer"));
           return postcssOptions;

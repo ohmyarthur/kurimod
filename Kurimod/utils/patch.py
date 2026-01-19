@@ -1,21 +1,21 @@
 """
-pyromod - A monkeypatcher add-on for Pyrogram
-Copyright (C) 2020 Cezar H. <https://github.com/usernein>
+Kurimod - A monkeypatcher add-on for Pyrogram
+Copyright (C) 2020 Dias Arthur. <https://github.com/ohmyarthur>
 
-This file is part of pyromod.
+This file is part of Kurimod.
 
-pyromod is free software: you can redistribute it and/or modify
+Kurimod is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-pyromod is distributed in the hope that it will be useful,
+Kurimod is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with pyromod.  If not, see <https://www.gnu.org/licenses/>.
+along with Kurimod.  If not, see <https://www.gnu.org/licenses/>.
 """
 from contextlib import contextmanager, asynccontextmanager
 from inspect import iscoroutinefunction
@@ -32,17 +32,17 @@ def patch_into(target_class):
     def wrapper(container: Type[T]) -> T:
         for name, func in filter(is_patchable, container.__dict__.items()):
             old = getattr(target_class, name, None)
-            if old is not None:  # Not adding 'old' to new func
+            if old is not None:
                 setattr(target_class, "old" + name, old)
 
-            # Worse Code
             tempConf = {
                 i: getattr(func, i, False)
                 for i in ["is_property", "is_static", "is_context"]
             }
 
-            async_to_sync(container, name)
-            func = getattr(container, name)
+            if not iscoroutinefunction(func):
+                async_to_sync(container, name)
+                func = getattr(container, name)
 
             for tKey, tValue in tempConf.items():
                 setattr(func, tKey, tValue)

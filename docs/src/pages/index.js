@@ -4,8 +4,8 @@ import Layout from '@theme/Layout';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
-import {PyromodChatSimulator} from "../components/PyromodChatSimulator";
-import {PyromodCodeBox} from "../components/PyromodCodeBox";
+import {KurimodChatSimulator} from "../components/KurimodChatSimulator";
+import {KurimodCodeBox} from "../components/KurimodCodeBox";
 
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
@@ -24,7 +24,7 @@ function HomepageHeader() {
 export default function Home() {
     return (
         <Layout
-            title={`pyromod documentation`}
+            title={`Kurimod documentation`}
             description="Powerful add-on that monkeypatches extra useful features on Pyrogram.">
             <HomepageHeader/>
             <div className={"flex flex-col items-center justify-center"}>
@@ -45,8 +45,8 @@ export default function Home() {
                     </div>
                 </div>
                 <div className={"flex w-full flex-col-reverse md:flex-row gap-8 justify-center items-center"}>
-                    <PyromodChatSimulator/>
-                    <PyromodCodeBox/>
+                    <KurimodChatSimulator/>
+                    <KurimodCodeBox/>
                 </div>
                 <a
                     href="/getting-started/intro"

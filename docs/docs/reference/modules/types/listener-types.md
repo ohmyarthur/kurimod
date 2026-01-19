@@ -1,9 +1,9 @@
 ---
 title: ListenerTypes
 ---
-## *enum* pyromod.types.ListenerTypes
+## *enum* Kurimod.types.ListenerTypes
 
-The `pyromod.types.ListenerTypes` enum defines the various types of listeners that you can use in pyromod.
+The `Kurimod.types.ListenerTypes` enum defines the various types of listeners that you can use in Kurimod.
 
 ### Member Values:
 

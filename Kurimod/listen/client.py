@@ -12,12 +12,12 @@ from ..utils import should_patch, patch_into
 
 if not config.disable_startup_logs:
     print(
-        "Pyromod is working! If you like pyromod, please star it at https://github.com/usernein/pyromod"
+        "Kurimod is working! If you like Kurimod, please star it at https://github.com/ohmyarthur/Kurimod"
     )
 
 
 @patch_into(pyrogram.client.Client)
-class Client(pyrogram.client.Client.on_callback_query()):
+class Client(pyrogram.client.Client):
     listeners: Dict[ListenerTypes, List[Listener]]
     old__init__: Callable
 
@@ -45,7 +45,7 @@ class Client(pyrogram.client.Client.on_callback_query()):
             inline_message_id=inline_message_id,
         )
 
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         future = loop.create_future()
 
         listener = Listener(

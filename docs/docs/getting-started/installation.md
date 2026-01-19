@@ -3,31 +3,26 @@ title: Installation
 sidebar_position: 2
 ---
 
-To get started with pyromod, you can install it using pip:
+To get started with Kurimod, you can install it using uv:
 
 ```bash
-pip install pyromod
+uv add git+https://github.com/ohmyarthur/Kurimod
 ```
 
-Or poetry:
+Or with pip:
 
 ```bash
-poetry add pyromod
+pip install git+https://github.com/ohmyarthur/Kurimod
 ```
 
-Or rye:
+Or with poetry:
 
 ```bash
-rye add pyromod
+poetry add git+https://github.com/ohmyarthur/Kurimod
 ```
+
 :::note
 
-pyromod **requires** pyrogram to be installed, since it's a plugin that only does monkeypatching, rather than a standalone fork of pyrogram.
-
-:::
-
-:::info
-
-You can use pyromod natively if you are using Hydrogram instead of Pyrogram, since Hydrogram is a (hugely optimized) fork of Pyrogram that already includes pyromod built-in.
+Kurimod **requires** kurigram to be installed, since it's a plugin that only does monkeypatching, rather than a standalone fork of kurigram.
 
 :::

@@ -137,7 +137,9 @@ class CallbackQueryHandler(
                 if iscoroutinefunction(listener.callback):
                     await listener.callback(client, query, *args)
                 else:
-                    listener.callback(client, query, *args)
+                    await client.loop.run_in_executor(
+                        None, listener.callback, client, query, *args
+                    )
 
                 raise pyrogram.StopPropagation
             else:
