@@ -4,8 +4,8 @@ import Layout from '@theme/Layout';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
-import {kurimodChatSimulator} from "../components/kurimodChatSimulator";
-import {kurimodCodeBox} from "../components/kurimodCodeBox";
+import {kurimodChatSimulator} from "../components/KurimodChatSimulator";
+import {kurimodCodeBox} from "../components/KurimodCodeBox";
 
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
