@@ -1,28 +1,27 @@
-name: Test deployment
+name: Test Deployment
 
 on:
   pull_request:
     branches:
       - master
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+    paths:
+      - 'docs/**'
 
 jobs:
   test-deploy:
-    name: Test deployment
+    name: Test Build
     runs-on: ubuntu-latest
-    env:
-      working-dir: ./docs
     defaults:
-        run:
-            working-directory: ${{ env.working-dir }}
+      run:
+        working-directory: ./docs
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: yarn
           cache-dependency-path: ./docs/yarn.lock
 
@@ -31,5 +30,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
       - name: Test build website
         run: yarn build
