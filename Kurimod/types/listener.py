@@ -8,7 +8,7 @@ from .identifier import Identifier
 from .listener_types import ListenerTypes
 
 
-@dataclass
+@dataclass(slots=True)
 class Listener:
     listener_type: ListenerTypes
     filters: Filter

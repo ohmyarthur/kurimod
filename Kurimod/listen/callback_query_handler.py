@@ -1,3 +1,4 @@
+import asyncio
 from inspect import iscoroutinefunction
 from typing import Callable, Tuple
 
@@ -64,7 +65,8 @@ class CallbackQueryHandler(
                 if iscoroutinefunction(filters.__call__):
                     listener_does_match = await filters(client, query)
                 else:
-                    listener_does_match = await client.loop.run_in_executor(
+                    loop = asyncio.get_running_loop()
+                    listener_does_match = await loop.run_in_executor(
                         None, filters, client, query
                     )
             else:
@@ -82,7 +84,8 @@ class CallbackQueryHandler(
             if iscoroutinefunction(self.filters.__call__):
                 handler_does_match = await self.filters(client, query)
             else:
-                handler_does_match = await client.loop.run_in_executor(
+                loop = asyncio.get_running_loop()
+                handler_does_match = await loop.run_in_executor(
                     None, self.filters, client, query
                 )
         else:
@@ -91,7 +94,6 @@ class CallbackQueryHandler(
         data = self.compose_data_identifier(query)
 
         if config.unallowed_click_alert:
-            # matches with the current query but from any user
             permissive_identifier = Identifier(
                 chat_id=data.chat_id,
                 message_id=data.message_id,
@@ -114,8 +116,6 @@ class CallbackQueryHandler(
                 await query.answer(alert)
                 return False
 
-        # let handler get the chance to handle if listener
-        # exists but its filters doesn't match
         return listener_does_match or handler_does_match
 
     @should_patch()
@@ -137,7 +137,8 @@ class CallbackQueryHandler(
                 if iscoroutinefunction(listener.callback):
                     await listener.callback(client, query, *args)
                 else:
-                    await client.loop.run_in_executor(
+                    loop = asyncio.get_running_loop()
+                    await loop.run_in_executor(
                         None, listener.callback, client, query, *args
                     )
 
@@ -146,3 +147,4 @@ class CallbackQueryHandler(
                 raise ValueError("Listener must have either a future or a callback")
         else:
             await self.original_callback(client, query, *args)
+

@@ -1,8 +1,8 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from typing import Optional, List, Union
 
 
-@dataclass
+@dataclass(slots=True)
 class Identifier:
     inline_message_id: Optional[Union[str, List[str]]] = None
     chat_id: Optional[Union[Union[int, str], List[Union[int, str]]]] = None
@@ -10,12 +10,9 @@ class Identifier:
     from_user_id: Optional[Union[Union[int, str], List[Union[int, str]]]] = None
 
     def matches(self, update: "Identifier") -> bool:
-        # Compare each property of other with the corresponding property in self
-        # If the property in self is None, the property in other can be anything
-        # If the property in self is not None, the property in other must be the same
-        for field in self.__annotations__:
-            pattern_value = getattr(self, field)
-            update_value = getattr(update, field)
+        for field in fields(self):
+            pattern_value = getattr(self, field.name)
+            update_value = getattr(update, field.name)
 
             if pattern_value is not None:
                 if isinstance(update_value, list):
@@ -34,8 +31,9 @@ class Identifier:
     def count_populated(self):
         non_null_count = 0
 
-        for attr in self.__annotations__:
-            if getattr(self, attr) is not None:
+        for field in fields(self):
+            if getattr(self, field.name) is not None:
                 non_null_count += 1
 
         return non_null_count
+

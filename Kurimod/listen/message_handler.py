@@ -1,3 +1,4 @@
+import asyncio
 from inspect import iscoroutinefunction
 from typing import Callable
 
@@ -44,7 +45,8 @@ class MessageHandler(pyrogram.handlers.message_handler.MessageHandler):
                 if iscoroutinefunction(filters.__call__):
                     listener_does_match = await filters(client, message)
                 else:
-                    listener_does_match = await client.loop.run_in_executor(
+                    loop = asyncio.get_running_loop()
+                    listener_does_match = await loop.run_in_executor(
                         None, filters, client, message
                     )
             else:
@@ -62,14 +64,13 @@ class MessageHandler(pyrogram.handlers.message_handler.MessageHandler):
             if iscoroutinefunction(self.filters.__call__):
                 handler_does_match = await self.filters(client, message)
             else:
-                handler_does_match = await client.loop.run_in_executor(
+                loop = asyncio.get_running_loop()
+                handler_does_match = await loop.run_in_executor(
                     None, self.filters, client, message
                 )
         else:
             handler_does_match = True
 
-        # let handler get the chance to handle if listener
-        # exists but its filters doesn't match
         return listener_does_match or handler_does_match
 
     @should_patch()
@@ -89,7 +90,8 @@ class MessageHandler(pyrogram.handlers.message_handler.MessageHandler):
                 if iscoroutinefunction(listener.callback):
                     await listener.callback(client, message, *args)
                 else:
-                    await client.loop.run_in_executor(
+                    loop = asyncio.get_running_loop()
+                    await loop.run_in_executor(
                         None, listener.callback, client, message, *args
                     )
 
@@ -98,3 +100,4 @@ class MessageHandler(pyrogram.handlers.message_handler.MessageHandler):
                 raise ValueError("Listener must have either a future or a callback")
         else:
             await self.original_callback(client, message, *args)
+

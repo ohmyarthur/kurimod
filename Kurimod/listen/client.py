@@ -19,11 +19,13 @@ if not config.disable_startup_logs:
 @patch_into(pyrogram.client.Client)
 class Client(pyrogram.client.Client):
     listeners: Dict[ListenerTypes, List[Listener]]
+    _listeners_lock: asyncio.Lock
     old__init__: Callable
 
     @should_patch()
     def __init__(self, *args, **kwargs):
         self.listeners = {listener_type: [] for listener_type in ListenerTypes}
+        self._listeners_lock = asyncio.Lock()
         self.old__init__(*args, **kwargs)
 
     @should_patch()
@@ -58,7 +60,8 @@ class Client(pyrogram.client.Client):
 
         future.add_done_callback(lambda _future: self.remove_listener(listener))
 
-        self.listeners[listener_type].append(listener)
+        async with self._listeners_lock:
+            self.listeners[listener_type].append(listener)
 
         try:
             return await asyncio.wait_for(future, timeout)
@@ -67,7 +70,7 @@ class Client(pyrogram.client.Client):
                 if iscoroutinefunction(config.timeout_handler.__call__):
                     await config.timeout_handler(pattern, listener, timeout)
                 else:
-                    await self.loop.run_in_executor(
+                    await loop.run_in_executor(
                         None, config.timeout_handler, pattern, listener, timeout
                     )
             elif config.throw_exceptions:
@@ -124,7 +127,6 @@ class Client(pyrogram.client.Client):
             if listener.identifier.matches(data):
                 matching.append(listener)
 
-        # in case of multiple matching listeners, the most specific should be returned
         def count_populated_attributes(listener_item: Listener):
             return listener_item.identifier.count_populated()
 
@@ -137,8 +139,6 @@ class Client(pyrogram.client.Client):
         for listener in self.listeners[listener_type]:
             if pattern.matches(listener.identifier):
                 matching.append(listener)
-
-        # in case of multiple matching listeners, the most specific should be returned
 
         def count_populated_attributes(listener_item: Listener):
             return listener_item.identifier.count_populated()
@@ -200,7 +200,8 @@ class Client(pyrogram.client.Client):
             if iscoroutinefunction(config.stopped_handler.__call__):
                 await config.stopped_handler(None, listener)
             else:
-                await self.loop.run_in_executor(
+                loop = asyncio.get_running_loop()
+                await loop.run_in_executor(
                     None, config.stopped_handler, None, listener
                 )
         elif config.throw_exceptions:
