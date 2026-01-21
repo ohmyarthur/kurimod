@@ -56,9 +56,14 @@ class MessageHandler(pyrogram.handlers.message_handler.MessageHandler):
 
     @should_patch()
     async def check(self, client: Client, message: Message):
-        listener_does_match = (
-            await self.check_if_has_matching_listener(client, message)
-        )[0]
+        # Check for a matching listener and store the result on the message object
+        # to avoid re-checking in `resolve_future_or_callback`.
+        # This is a performance optimization to prevent redundant checks on every message.
+        listener_does_match, listener = await self.check_if_has_matching_listener(
+            client, message
+        )
+        setattr(message, "_listener_does_match", listener_does_match)
+        setattr(message, "_listener", listener)
 
         if callable(self.filters):
             if iscoroutinefunction(self.filters.__call__):
@@ -75,9 +80,10 @@ class MessageHandler(pyrogram.handlers.message_handler.MessageHandler):
 
     @should_patch()
     async def resolve_future_or_callback(self, client: Client, message: Message, *args):
-        listener_does_match, listener = await self.check_if_has_matching_listener(
-            client, message
-        )
+        # Retrieve the stored listener check result from the message object.
+        # This avoids the expensive redundant check that was previously here.
+        listener_does_match = getattr(message, "_listener_does_match", False)
+        listener = getattr(message, "_listener", None)
 
         if listener and listener_does_match:
             client.remove_listener(listener)
