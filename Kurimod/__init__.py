@@ -19,7 +19,7 @@ along with kurimod.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 from .config import config
-from .helpers import ikb, bki, ntb, btn, kb, kbtn, array_chunk, force_reply
+from .helpers import ikb, bki, ntb, btn, kb, kbtn, array_chunk, force_reply, InlineKeyboard
 from .listen import Client, MessageHandler, CallbackQueryHandler, Message, Chat, User
 from .nav import Pagination
 from .utils import patch_into, should_patch
@@ -43,4 +43,5 @@ __all__ = [
     "array_chunk",
     "force_reply",
     "Pagination",
+    "InlineKeyboard",
 ]

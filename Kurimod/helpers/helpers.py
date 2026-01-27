@@ -88,3 +88,7 @@ def force_reply(selective=True):
 
 def array_chunk(input_array, size):
     return [input_array[i : i + size] for i in range(0, len(input_array), size)]
+
+
+# Add InlineKeyboard class as alias for InlineKeyboardMarkup for better compatibility
+InlineKeyboard = InlineKeyboardMarkup
